@@ -117,6 +117,8 @@
     docker
     openssh
     alacritty
+    blesh
+    oh-my-posh
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
