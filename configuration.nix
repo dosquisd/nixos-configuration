@@ -2,13 +2,22 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
+let
+  home-manager = builtins.fetchTarball https://github.com/nix-community/home-manager/archive/release-25.11.tar.gz;
+in
 {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      (import "${home-manager}/nixos")
     ];
+
+  home-manager.useUserPackages = true;
+  home-manager.useGlobalPkgs = true;
+  home-manager.backupFileExtension = "backup";
+  home-manager.users.juand = import ./home.nix;
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -87,11 +96,13 @@
   users.users.juand = {
     isNormalUser = true;
     description = "JuanD";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" ];
     packages = with pkgs; [
     #  thunderbird
     ];
   };
+
+  virtualisation.docker.enable = true;
 
   # Install firefox.
   programs.firefox.enable = true;
@@ -102,23 +113,51 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    # Terminal apps
+    curl
+    htop
+    vim
     wget
-    fastfetch
-    git
+
+    # Compilers && Package Managers && Languages
     gcc
     clang
     cargo
+    pnpm
+    proto
+    protobuf
     python312
     python313
+    rustc
+    rustup
     uv
-    gh
-    pnpm
-    docker
-    openssh
+
+    # Dev tools
     alacritty
-    blesh
-    oh-my-posh
+    ansible
+    awscli
+    docker
+    git
+    gh
+    moon
+    postman
+    ruff
+    terraform
+    vscode
+
+    # Extra tools
+    openssh
+
+    # Extra apps
+    discord
+    spotify
+  ];
+
+  fonts.packages = with pkgs; [
+    nerd-fonts.jetbrains-mono
+
+    # Just to test it, but in practice I'll use jetbrains everywhere
+    nerd-fonts.fira-code
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -132,7 +171,7 @@
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
+  services.openssh.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
@@ -147,5 +186,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "25.11"; # Did you read the comment?
-
 }
