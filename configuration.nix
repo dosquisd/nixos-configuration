@@ -118,6 +118,7 @@ in
     htop
     vim
     wget
+    yazi
 
     # Compilers && Package Managers && Languages
     gcc
@@ -146,6 +147,7 @@ in
     vscode
 
     # Extra tools
+    nix-prefetch-github
     openssh
 
     # Extra apps
@@ -167,6 +169,11 @@ in
   #   enable = true;
   #   enableSSHSupport = true;
   # };
+
+  programs.nautilus-open-any-terminal = {
+    enable = true;
+    terminal = "alacritty";
+  };
 
   # List services that you want to enable:
 

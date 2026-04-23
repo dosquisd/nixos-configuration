@@ -62,6 +62,32 @@
     enableBashIntegration = true;
   };
 
+  # Unfortunately, Ayu-Dark isn't included
+  # in the Yazi themes in this repository: https://github.com/aguirre-matteo/nix-yazi-flavors,
+  # but it might still be useful!
+  # This is another repo: https://github.com/yazi-rs/flavors
+  programs.yazi = {
+    enable = true;
+    flavors = {
+      ayu-dark = pkgs.stdenv.mkDerivation {
+        pname = "yazi-flavor-ayu-dark";
+        version = "2025-03-02";  # yyyy-mm-dd
+
+        src = pkgs.fetchFromGitHub {
+          owner = "kmlupreti";
+          repo = "ayu-dark.yazi";
+          rev = "1da67a8195ebd0978fadc8cb1c6c9142ce331b8a";
+          hash = "sha256-Jyl4Vo7H8WXtG9o4H0SkHneBztjGLMdNgQ4GkY01a0E=";
+        };
+
+        installPhase = ''
+          mkdir -p $out
+          cp $src/* $out/
+        '';
+      };
+    };
+  };
+
   programs.alacritty = {
     enable = true;
     theme = "moonfly";
