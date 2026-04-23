@@ -7,6 +7,7 @@
   home.homeDirectory = "/home/juand";
   home.stateVersion = "25.11";
   home.packages = with pkgs; [
+    alacritty-theme
     blesh
   ];
 
@@ -52,7 +53,6 @@
     };
   };
 
-  programs.alacritty.enable = true;
   programs.vim.enable = true;
   programs.zoxide.enable = true;
 
@@ -60,6 +60,48 @@
     enable = true;
     useTheme = "hotstick.minimal";
     enableBashIntegration = true;
+  };
+
+  programs.alacritty = {
+    enable = true;
+    theme = "moonfly";
+    settings = {
+      window = {
+        opacity = 0.9;
+        decorations = "None";
+        padding = {
+          x = 4;
+          y = 4;
+        };
+      };
+      font = {
+        size = 10.5;
+        normal = {
+          family = "JetBrainsMono Nerd Font Mono";
+          style = "bold";
+        };
+        bold = {
+          family = "JetBrainsMono Nerd Font Mono";
+        };
+        italic = {
+          family = "JetBrainsMono Nerd Font Mono";
+        };
+        bold_italic = {
+          family = "JetBrainsMono Nerd Font Mono";
+        };
+      };
+      cursor = {
+        style = {
+          shape = "Block";
+          blinking = "On";
+        };
+      };
+      scrolling.multiplier = 1;
+      bell = {
+        animation = "EaseOutExpo";
+        duration = 0;
+      };
+    };
   };
 
   programs.fastfetch = {
