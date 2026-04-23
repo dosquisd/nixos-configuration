@@ -22,10 +22,16 @@
       # Initialize blesh
       if [ -f "$(blesh-share)"/ble.sh ]; then
         [[ $- == *i* ]] && source -- "$(blesh-share)"/ble.sh --attach=none
-        [[ ! ''${BLE_VERSION-} ]] || ble-attach
       fi
     '';
-    initExtra = "fastfetch";
+    initExtra = ''
+    fastfetch
+
+    # Attach blesh only for interactive shells
+    if [[ $- == *i* ]] && [[ -n ''${BLE_VERSION-} ]]; then
+      ble-attach
+    fi
+    '';
     shellAliases = {
       la = "ls -a";
       ".." = "cd ..";
