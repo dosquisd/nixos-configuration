@@ -7,6 +7,15 @@
   home.homeDirectory = "/home/juand";
   home.stateVersion = "25.11";
   home.packages = with pkgs; [
+    # System packages
+    # The desktop environment is use is Gnome 49.2
+    # I had problems with right click in touchpad, it wasn't working
+    # So I installed this gnome extension and run this command
+    # gsettings set org.gnome.desktop.peripherals.touchpad click-method 'areas'
+    # Just in case it happens again!
+    gnome-tweaks
+
+    # Apps
     alacritty-theme
     blesh
   ];
@@ -96,8 +105,8 @@
         opacity = 0.9;
         decorations = "None";
         padding = {
-          x = 4;
-          y = 4;
+          x = 10;
+          y = 10;
         };
       };
       font = {
