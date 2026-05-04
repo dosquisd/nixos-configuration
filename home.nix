@@ -58,6 +58,7 @@
     settings = {
       init.defaultBranch = "main";
       alias.tree = "log --graph --oneline --all --decorate";
+      core.editor = "vim";
       push.autoSetupRemote = true;
     };
   };
