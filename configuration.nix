@@ -54,17 +54,23 @@ in
     LC_TIME = "es_CO.UTF-8";
   };
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
+  services.xserver = {
+    # Enable the X11 windowing system.
+    enable = true;
+    displayManager.gdm = {
+      enable = true;
+      wayland = true;
+    };
 
-  # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
+    # Configure keymap in X11
+    xkb = {
+      layout = "latam";
+      variant = "";
+    };
 
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "latam";
-    variant = "";
+    # Enable the GNOME Desktop Environment.
+    desktopManager.gnome.enable = true;
+    videoDrivers = [ "nvidia" ];
   };
 
   # Configure console keymap
@@ -72,6 +78,31 @@ in
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
+
+  # Enable OpenGL
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
+  };
+
+  # Configure the NVIDIA driver
+  hardware.nvidia = {
+    modesetting.enable = true;
+    open = true; # Use the open-source kernel module
+    nvidiaSettings = true;
+    package = config.boot.kernelPackages.nvidiaPackages.stable;
+
+    prime = {
+      offload = {
+        enable = true;
+        enableOffloadCmd = true;
+      };
+
+      # command: lspci | grep -E "VGA|3D"
+      intelBusId = "PCI:0:2:0";
+      nvidiaBusId = "PCI:1:0:0";
+    };
+  };
 
   # Enable sound with pipewire.
   services.pulseaudio.enable = false;
@@ -116,6 +147,8 @@ in
     # Terminal apps
     curl
     htop
+    p7zip
+    unzip
     vim
     wget
     yazi
@@ -149,6 +182,25 @@ in
     # Extra tools
     nix-prefetch-github
     openssh
+    pciutils
+
+    # Hypland tools
+    hypridle
+    hyprlock
+    hyprsunset
+    hyprland-qtutils
+    hyprpaper
+    waybar
+    rofi
+    swww
+    dunst
+    libnotify
+    lm_sensors
+    wl-clipboard
+    grim
+    slurp
+    playerctl
+    brightnessctl
 
     # Extra apps
     discord
@@ -174,6 +226,19 @@ in
     enable = true;
     terminal = "alacritty";
   };
+
+  # Configure Hyprland
+  programs.hyprland = {
+    enable = true;
+    xwayland.enable = true;
+  };
+
+  # experimental features
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
+
 
   # List services that you want to enable:
 
