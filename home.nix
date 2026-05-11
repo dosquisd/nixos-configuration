@@ -3,6 +3,10 @@
 
 { config, pkgs, ... }:
 {
+  imports = [
+    ./desktop.nix
+  ];
+
   home.username = "juand";
   home.homeDirectory = "/home/juand";
   home.stateVersion = "25.11";

@@ -20,11 +20,38 @@ in
   home-manager.users.juand = import ./home.nix;
 
   # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  boot = {
+    loader.systemd-boot.enable = true;
+    loader.efi.canTouchEfiVariables = true;
 
-  # Use latest kernel.
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+    # Use latest kernel.
+    kernelPackages = pkgs.linuxPackages_latest;
+
+    plymouth = {
+      enable = true;
+      theme = "rings";
+      themePackages = with pkgs; [
+        # By default we would install all themes
+        (adi1090x-plymouth-themes.override {
+          selected_themes = [ "rings" ];
+        })
+      ];
+    };
+
+    # Enable "Silent boot"
+    consoleLogLevel = 3;
+    initrd.verbose = false;
+    kernelParams = [
+      "quiet"
+      "udev.log_level=3"
+      "systemd.show_status=auto"
+    ];
+
+    # Hide the OS choice for bootloaders.
+    # It's still possible to open the bootloader list by pressing any key
+    # It will just not appear on screen unless a key is pressed
+    loader.timeout = 0;
+  };
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -127,7 +154,7 @@ in
   users.users.juand = {
     isNormalUser = true;
     description = "JuanD";
-    extraGroups = [ "networkmanager" "wheel" "docker" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" "input" ];
     packages = with pkgs; [
     #  thunderbird
     ];
@@ -147,6 +174,7 @@ in
     # Terminal apps
     curl
     htop
+    tree
     p7zip
     unzip
     vim
@@ -174,6 +202,7 @@ in
     git
     gh
     moon
+    nixfmt
     postman
     ruff
     terraform
@@ -185,12 +214,22 @@ in
     pciutils
 
     # Hypland tools
+    blueman
+    cliphist
     hypridle
     hyprlock
     hyprsunset
     hyprland-qtutils
     hyprpaper
+    networkmanagerapplet
+    nwg-displays
+    polkit_gnome
+    swaynotificationcenter
     waybar
+    wallust
+    libsForQt5.qtstyleplugin-kvantum
+    libsForQt5.qt5ct
+    kdePackages.qt6ct
     rofi
     swww
     dunst
@@ -201,6 +240,9 @@ in
     slurp
     playerctl
     brightnessctl
+    yad
+    swappy
+    jq
 
     # Extra apps
     discord
@@ -227,10 +269,23 @@ in
     terminal = "alacritty";
   };
 
+  programs.direnv = {
+    enable = true;
+    nix-direnv.enable = true;
+  };
+
   # Configure Hyprland
   programs.hyprland = {
     enable = true;
     xwayland.enable = true;
+  };
+
+  xdg.portal = {
+    enable = true;
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-gtk
+      xdg-desktop-portal-hyprland
+    ];
   };
 
   # experimental features
