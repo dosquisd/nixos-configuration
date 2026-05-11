@@ -1,7 +1,7 @@
 /* ---- 💫 https://github.com/JaKooLit 💫 ---- */
 /* Wallust Chroma Edge */
 
-@import '../../.config/waybar/wallust/colors-waybar.css';
+@import '/etc/nixos/apps/waybar/wallust/colors-waybar.css';
 
 * {
 font-family: "JetBrainsMono Nerd Font";
