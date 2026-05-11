@@ -1,16 +1,17 @@
 { config, pkgs, ... }:
 
 let
-  hyprlandConfig = builtins.replaceStrings
-    [
-      "source= $UserConfigs/Startup_Apps.conf # put your start-up packages on this file"
-      "source= $UserConfigs/ENVariables.conf # Environment variables to load"
-    ]
-    [
-      "# startup apps are managed by Home Manager services"
-      "# environment variables are managed by Home Manager"
-    ]
-    (builtins.readFile ./apps/hypr/hyprland.conf);
+  hyprlandConfig =
+    builtins.replaceStrings
+      [
+        "source= $UserConfigs/Startup_Apps.conf # put your start-up packages on this file"
+        "source= $UserConfigs/ENVariables.conf # Environment variables to load"
+      ]
+      [
+        "# startup apps are managed by Home Manager services"
+        "# environment variables are managed by Home Manager"
+      ]
+      (builtins.readFile ./apps/hypr/hyprland.conf);
 in
 {
   home.sessionVariables = {
@@ -51,41 +52,41 @@ in
     "hypr/initial-boot.sh".source = ./apps/hypr/initial-boot.sh;
     "hypr/monitors.conf".source = ./apps/hypr/monitors.conf;
     "hypr/workspaces.conf".source = ./apps/hypr/workspaces.conf;
-    "waybar".source = ./apps/waybar;
+    # "waybar".source = ./apps/waybar;
   };
 
   systemd.user.services = {
-    waybar = {
-      Unit = {
-        Description = "Waybar";
-        PartOf = [ "graphical-session.target" ];
-        After = [ "graphical-session.target" ];
-      };
-      Service = {
-        ExecStart = "${pkgs.waybar}/bin/waybar";
-        Restart = "on-failure";
-        RestartSec = 2;
-      };
-      Install = {
-        WantedBy = [ "graphical-session.target" ];
-      };
-    };
+    # waybar = {
+    #   Unit = {
+    #     Description = "Waybar";
+    #     PartOf = [ "graphical-session.target" ];
+    #     After = [ "graphical-session.target" ];
+    #   };
+    #   Service = {
+    #     ExecStart = "${pkgs.waybar}/bin/waybar";
+    #     Restart = "on-failure";
+    #     RestartSec = 2;
+    #   };
+    #   Install = {
+    #     WantedBy = [ "graphical-session.target" ];
+    #   };
+    # };
 
-    hypridle = {
-      Unit = {
-        Description = "Hypridle";
-        PartOf = [ "graphical-session.target" ];
-        After = [ "graphical-session.target" ];
-      };
-      Service = {
-        ExecStart = "${pkgs.hypridle}/bin/hypridle";
-        Restart = "on-failure";
-        RestartSec = 2;
-      };
-      Install = {
-        WantedBy = [ "graphical-session.target" ];
-      };
-    };
+    # hypridle = {
+    #   Unit = {
+    #     Description = "Hypridle";
+    #     PartOf = [ "graphical-session.target" ];
+    #     After = [ "graphical-session.target" ];
+    #   };
+    #   Service = {
+    #     ExecStart = "${pkgs.hypridle}/bin/hypridle";
+    #     Restart = "on-failure";
+    #     RestartSec = 2;
+    #   };
+    #   Install = {
+    #     WantedBy = [ "graphical-session.target" ];
+    #   };
+    # };
 
     nm-applet = {
       Unit = {
@@ -119,21 +120,21 @@ in
       };
     };
 
-    swaync = {
-      Unit = {
-        Description = "Sway Notification Center";
-        PartOf = [ "graphical-session.target" ];
-        After = [ "graphical-session.target" ];
-      };
-      Service = {
-        ExecStart = "${pkgs.swaynotificationcenter}/bin/swaync";
-        Restart = "on-failure";
-        RestartSec = 2;
-      };
-      Install = {
-        WantedBy = [ "graphical-session.target" ];
-      };
-    };
+    # swaync = {
+    #   Unit = {
+    #     Description = "Sway Notification Center";
+    #     PartOf = [ "graphical-session.target" ];
+    #     After = [ "graphical-session.target" ];
+    #   };
+    #   Service = {
+    #     ExecStart = "${pkgs.swaynotificationcenter}/bin/swaync";
+    #     Restart = "on-failure";
+    #     RestartSec = 2;
+    #   };
+    #   Install = {
+    #     WantedBy = [ "graphical-session.target" ];
+    #   };
+    # };
 
     swww-daemon = {
       Unit = {
@@ -202,4 +203,3 @@ in
     };
   };
 }
-

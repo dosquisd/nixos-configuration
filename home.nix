@@ -5,6 +5,12 @@
 {
   imports = [
     ./desktop.nix
+    ./apps/cava/cava.nix
+    ./apps/hypr/hypr.nix
+    ./apps/rofi/rofi.nix
+    ./apps/swaync/swaync.nix
+    ./apps/wallust/wallust.nix
+    ./apps/waybar/waybar.nix
   ];
 
   home.username = "juand";
@@ -39,12 +45,12 @@
       fi
     '';
     initExtra = ''
-    fastfetch
+      fastfetch
 
-    # Attach blesh only for interactive shells
-    if [[ $- == *i* ]] && [[ -n ''${BLE_VERSION-} ]]; then
-      ble-attach
-    fi
+      # Attach blesh only for interactive shells
+      if [[ $- == *i* ]] && [[ -n ''${BLE_VERSION-} ]]; then
+        ble-attach
+      fi
     '';
     shellAliases = {
       la = "ls -a";
@@ -54,7 +60,7 @@
 
   programs.git = {
     enable = true;
-    userName  = "dosquisd";
+    userName = "dosquisd";
     userEmail = "pereznjuandiego@gmail.com";
     lfs = {
       enable = true;
@@ -85,7 +91,7 @@
     flavors = {
       ayu-dark = pkgs.stdenv.mkDerivation {
         pname = "yazi-flavor-ayu-dark";
-        version = "2025-03-02";  # yyyy-mm-dd
+        version = "2025-03-02"; # yyyy-mm-dd
 
         src = pkgs.fetchFromGitHub {
           owner = "kmlupreti";
@@ -146,7 +152,7 @@
 
   programs.fastfetch = {
     enable = true;
-    settings =  {
+    settings = {
       logo = {
         padding = {
           top = 1;
