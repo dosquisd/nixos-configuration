@@ -234,6 +234,7 @@ in
     networkmanagerapplet
     nwg-displays
     polkit_gnome
+    pavucontrol
     swaynotificationcenter
     waybar
     wallust
