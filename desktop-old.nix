@@ -1,16 +1,17 @@
 { config, pkgs, ... }:
 
 let
-  hyprlandConfig = builtins.replaceStrings
-    [
-      "source= $UserConfigs/Startup_Apps.conf # put your start-up packages on this file"
-      "source= $UserConfigs/ENVariables.conf # Environment variables to load"
-    ]
-    [
-      "# startup apps are managed by Home Manager services"
-      "# environment variables are managed by Home Manager"
-    ]
-    (builtins.readFile ./apps/hypr/hyprland.conf);
+  hyprlandConfig =
+    builtins.replaceStrings
+      [
+        "source= $UserConfigs/Startup_Apps.conf # put your start-up packages on this file"
+        "source= $UserConfigs/ENVariables.conf # Environment variables to load"
+      ]
+      [
+        "# startup apps are managed by Home Manager services"
+        "# environment variables are managed by Home Manager"
+      ]
+      (builtins.readFile ./apps/hypr/hyprland.conf);
 in
 {
   home.sessionVariables = {
