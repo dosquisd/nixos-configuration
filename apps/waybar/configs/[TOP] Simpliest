@@ -1,37 +1,32 @@
 /* ---- 💫 https://github.com/JaKooLit 💫 ---- */
 // ### TOP Simpliests ## //
-
 {
-"include": [
-  "/etc/nixos/apps/waybar/Modules",
-  "/etc/nixos/apps/waybar/ModulesWorkspaces",
-  "/etc/nixos/apps/waybar/ModulesCustom",
-  "/etc/nixos/apps/waybar/ModulesGroups",
-  "/etc/nixos/apps/waybar/UserModules",
-  ],
-"layer": "top", 
-"position": "top", 
-//"mode": "dock",
-"exclusive": true,
-"passthrough": false,
-"gtk-layer-shell": true,
-"margin-left": 6,
-"margin-right": 6,
-"margin-top": 2,
-
-"modules-left": [	 
-	"hyprland/workspaces",
-	"tray",
-	"mpris", 
+	"include": [
+		"/etc/nixos/apps/waybar/Modules",
+		"/etc/nixos/apps/waybar/ModulesWorkspaces",
+		"/etc/nixos/apps/waybar/ModulesCustom",
+		"/etc/nixos/apps/waybar/ModulesGroups",
+		"/etc/nixos/apps/waybar/UserModules",
 	],
-    
-"modules-center": [
-	"hyprland/window", 
+	"layer": "top",
+	"position": "top",
+	//"mode": "dock",
+	"exclusive": true,
+	"passthrough": false,
+	"gtk-layer-shell": true,
+	"margin-left": 6,
+	"margin-right": 6,
+	"margin-top": 2,
+	"modules-left": [
+		"hyprland/workspaces",
+		"tray",
+		"mpris",
 	],
-    
-"modules-right": [
-	"idle_inhibitor",
-	"group/notify",
+	"modules-center": [
+		"hyprland/window",
+	],
+	"modules-right": [
+		"idle_inhibitor",
+		"group/notify",
 	],
 }
-

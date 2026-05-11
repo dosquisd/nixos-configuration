@@ -1,39 +1,35 @@
 /* ---- 💫 https://github.com/JaKooLit 💫 ---- */
-
 // ### Minimal -SHORT ### //
-
 {
-"include": [
-  "/etc/nixos/apps/waybar/Modules",
-  "/etc/nixos/apps/waybar/ModulesWorkspaces",
-  "/etc/nixos/apps/waybar/ModulesCustom",
-  "/etc/nixos/apps/waybar/ModulesGroups",
-  "/etc/nixos/apps/waybar/UserModules",
-  ],
-"layer": "top",
-"position": "top",
-"width": 1050,
-"margin-top": 3,
-
-"modules-left": [
-	"clock",  
-	"custom/weather", 
+	"include": [
+		"/etc/nixos/apps/waybar/Modules",
+		"/etc/nixos/apps/waybar/ModulesWorkspaces",
+		"/etc/nixos/apps/waybar/ModulesCustom",
+		"/etc/nixos/apps/waybar/ModulesGroups",
+		"/etc/nixos/apps/waybar/UserModules",
 	],
-
-"modules-center": [
-	"hyprland/workspaces#roman"
+	"layer": "top",
+	"position": "top",
+	"width": 1050,
+	"margin-top": 3,
+	"modules-left": [
+		"clock",
+		"custom/weather",
 	],
-
-"modules-right": [
-	"custom/menu", 
-	"tray",
-	"group/notify",
-	"mpris", 
-	"network", 
-	"bluetooth", 
-	"backlight", 
-	"pulseaudio", 
-	"battery", 
-	"custom/nightlight",
-	"custom/power"],
+	"modules-center": [
+		"hyprland/workspaces#roman"
+	],
+	"modules-right": [
+		"custom/menu",
+		"tray",
+		"group/notify",
+		"mpris",
+		"network",
+		"bluetooth",
+		"backlight",
+		"pulseaudio",
+		"battery",
+		"custom/nightlight",
+		"custom/power"
+	],
 }

@@ -1,14 +1,13 @@
 /* ---- 💫 https://github.com/JaKooLit 💫 ---- */
-
 // ### DEFAULT - Bottom ### //
 {
 	"include": [
-	  "/etc/nixos/apps/waybar/Modules",
-	  "/etc/nixos/apps/waybar/ModulesWorkspaces",
-	  "/etc/nixos/apps/waybar/ModulesCustom",
-	  "/etc/nixos/apps/waybar/ModulesGroups",
-	  "/etc/nixos/apps/waybar/UserModules",
-	  ],
+		"/etc/nixos/apps/waybar/Modules",
+		"/etc/nixos/apps/waybar/ModulesWorkspaces",
+		"/etc/nixos/apps/waybar/ModulesCustom",
+		"/etc/nixos/apps/waybar/ModulesGroups",
+		"/etc/nixos/apps/waybar/UserModules",
+	],
 	"layer": "top",
 	//"mode": "dock",
 	"exclusive": true,
@@ -20,7 +19,6 @@
 	"margin-top": 3,
 	"margin-left": 8,
 	"margin-right": 8,
-	
 	"modules-left": [
 		"custom/separator#blank",
 		"custom/cava_mviz",
@@ -28,8 +26,7 @@
 		"custom/playerctl",
 		"custom/separator#blank_2",
 		"hyprland/window",
-		],
-	
+	],
 	"modules-center": [
 		"group/app_drawer",
 		"custom/separator#blank",
@@ -40,18 +37,17 @@
 		"custom/separator#dot-line",
 		"custom/weather",
 		"custom/separator#dot-line",
-		"idle_inhibitor",	
-		"custom/hint",	
-		],
-	
+		"idle_inhibitor",
+		"custom/hint",
+	],
 	"modules-right": [
 		"tray",
 		"network#speed",
 		"custom/separator#dot-line",
 		"group/mobo_drawer",
-		"custom/separator#line",  
+		"custom/separator#line",
 		"group/audio",
-		"custom/separator#dot-line", 
+		"custom/separator#dot-line",
 		"group/status",
-		],
-	}
+	],
+}

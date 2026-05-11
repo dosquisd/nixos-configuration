@@ -3,42 +3,38 @@
 //* .............GARDENIA.......................*/
 //* ............................................*/
 //* --- 👍 designed by https://github.com/Krautt  👍 --- */
-
 {
- 
-"include": [
-  "/etc/nixos/apps/waybar/Modules",
-  "/etc/nixos/apps/waybar/ModulesWorkspaces",
-  "/etc/nixos/apps/waybar/ModulesCustom",
-  "/etc/nixos/apps/waybar/ModulesGroups",
-  "/etc/nixos/apps/waybar/UserModules",
-  ],
-"layer": "top",
-//"mode": "dock",
-"exclusive": true,
-"passthrough": false,
-"position": "bottom",
-"spacing": 5,
-"fixed-center": false,
-"ipc": true,
-"margin-top": 5,
-//"margin-bottom": 5,
-"width": 1000,
-	
-"modules-left": [
-	"clock#5", 
-	"mpris", 
-	"tray", 
-	"group/notify"
+	"include": [
+		"/etc/nixos/apps/waybar/Modules",
+		"/etc/nixos/apps/waybar/ModulesWorkspaces",
+		"/etc/nixos/apps/waybar/ModulesCustom",
+		"/etc/nixos/apps/waybar/ModulesGroups",
+		"/etc/nixos/apps/waybar/UserModules",
 	],
-	  
-"modules-center": ["hyprland/workspaces#kanji"], 
-	
-"modules-right": [
-	"pulseaudio#1",
-	"backlight#2",
-	"power-profiles-daemon", 
-	"battery"
+	"layer": "top",
+	//"mode": "dock",
+	"exclusive": true,
+	"passthrough": false,
+	"position": "bottom",
+	"spacing": 5,
+	"fixed-center": false,
+	"ipc": true,
+	"margin-top": 5,
+	//"margin-bottom": 5,
+	"width": 1000,
+	"modules-left": [
+		"clock#5",
+		"mpris",
+		"tray",
+		"group/notify"
 	],
-
+	"modules-center": [
+		"hyprland/workspaces#kanji"
+	],
+	"modules-right": [
+		"pulseaudio#1",
+		"backlight#2",
+		"power-profiles-daemon",
+		"battery"
+	],
 }

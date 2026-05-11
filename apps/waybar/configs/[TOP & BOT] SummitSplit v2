@@ -1,16 +1,14 @@
 /* ---- 💫 https://github.com/JaKooLit 💫 ---- */
-
 /* ### DUAL TOP and BOTTOM v 2### */
-
 [
   {
-  "include": [
-  "/etc/nixos/apps/waybar/Modules",
-  "/etc/nixos/apps/waybar/ModulesWorkspaces",
-  "/etc/nixos/apps/waybar/ModulesCustom",
-  "/etc/nixos/apps/waybar/ModulesGroups",
-  "/etc/nixos/apps/waybar/UserModules",
-  ],
+    "include": [
+      "/etc/nixos/apps/waybar/Modules",
+      "/etc/nixos/apps/waybar/ModulesWorkspaces",
+      "/etc/nixos/apps/waybar/ModulesCustom",
+      "/etc/nixos/apps/waybar/ModulesGroups",
+      "/etc/nixos/apps/waybar/UserModules",
+    ],
     "name": "topbar",
     "layer": "top",
     "position": "top",
@@ -27,27 +25,28 @@
       "bluetooth",
       "network",
     ],
-    "modules-center": ["hyprland/window"],
-"modules-right": [
+    "modules-center": [
+      "hyprland/window"
+    ],
+    "modules-right": [
       "mpris",
       "battery",
       "backlight",
       "pulseaudio",
-      "group/mobo_drawer", 
+      "group/mobo_drawer",
       "idle_inhibitor",
       "custom/nightlight",
       "group/power"
     ],
-
-},
+  },
   {
-  "include": [
-  "/etc/nixos/apps/waybar/Modules",
-  "/etc/nixos/apps/waybar/ModulesWorkspaces",
-  "/etc/nixos/apps/waybar/ModulesCustom",
-  "/etc/nixos/apps/waybar/ModulesGroups",
-  "/etc/nixos/apps/waybar/UserModules",
-  ],
+    "include": [
+      "/etc/nixos/apps/waybar/Modules",
+      "/etc/nixos/apps/waybar/ModulesWorkspaces",
+      "/etc/nixos/apps/waybar/ModulesCustom",
+      "/etc/nixos/apps/waybar/ModulesGroups",
+      "/etc/nixos/apps/waybar/UserModules",
+    ],
     "name": "bottombar",
     "layer": "top",
     "position": "bottom",
@@ -58,8 +57,16 @@
     "passthrough": false,
     "gtk-layer-shell": true,
     "reload_style_on_change": true,
-    "modules-left": ["hyprland/workspaces#rw"],
-    "modules-center": ["wlr/taskbar"],
-    "modules-right": ["tray", "custom/updater", "group/notify"],
+    "modules-left": [
+      "hyprland/workspaces#rw"
+    ],
+    "modules-center": [
+      "wlr/taskbar"
+    ],
+    "modules-right": [
+      "tray",
+      "custom/updater",
+      "group/notify"
+    ],
   }
 ]
