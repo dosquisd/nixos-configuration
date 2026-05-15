@@ -58,6 +58,14 @@
     };
   };
 
+  wayland.windowManager.hyprland = {
+    enable = true;
+    systemd = {
+      enable = true;
+      variables = [ "--all" ];
+    };
+  };
+
   programs.git = {
     enable = true;
     userName = "dosquisd";

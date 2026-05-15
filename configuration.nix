@@ -200,6 +200,7 @@ in
     protobuf
     python312
     python313
+    python313Packages.requests # Just because wayland needs it
     rustc
     rustup
     uv

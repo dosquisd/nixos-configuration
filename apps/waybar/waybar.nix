@@ -13,7 +13,10 @@ in
 
   programs.waybar = {
     enable = true;
-    systemd.enable = true;
+    systemd = {
+      enable = true;
+      target = "hyprland-session.target";
+    };
 
     # Default style is /etc/nixos/apps/waybar/style/'[Dark] Latte-Wallust combined.css'
     style = waybarStyle;

@@ -2,6 +2,13 @@
 { config, pkgs, ... }:
 
 {
+  systemd.user.services.swaync = {
+    Unit = {
+      After = [ "hyprland-session.target" ];
+      PartOf = [ "hyprland-session.target" ];
+    };
+  };
+
   services.swaync = {
     enable = true;
 
