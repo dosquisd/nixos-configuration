@@ -226,6 +226,7 @@ in
 
     # Hypland tools
     blueman
+    bc
     cliphist
     hypridle
     hyprlock
@@ -267,6 +268,15 @@ in
     # Just to test it, but in practice I'll use jetbrains everywhere
     nerd-fonts.fira-code
   ];
+
+  environment.binsh = "${pkgs.bash}/bin/bash";
+
+  system.activationScripts.binbash = {
+    text = ''
+      ln -sf ${pkgs.bash}/bin/bash /bin/bash
+    '';
+    deps = [];
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
