@@ -164,6 +164,7 @@ in
       "wheel"
       "docker"
       "input"
+      "dialout"
     ];
     packages = with pkgs; [
       #  thunderbird
@@ -208,6 +209,7 @@ in
     # Dev tools
     alacritty
     ansible
+    arduino-ide
     awscli
     docker
     git
