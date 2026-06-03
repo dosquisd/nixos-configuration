@@ -57,7 +57,7 @@ in
           "hyprland/workspaces#rw"
           "clock"
           "custom/separator#dot-line"
-          "custom/weather"
+          "battery"
           "custom/separator#dot-line"
           "idle_inhibitor"
           "custom/hint"
