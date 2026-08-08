@@ -165,6 +165,7 @@ in
       "docker"
       "input"
       "dialout"
+      "plugdev"  # For RTL-SDR dongle
     ];
     packages = with pkgs; [
       #  thunderbird
@@ -183,6 +184,7 @@ in
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     # Terminal apps
+    btop
     curl
     htop
     tree
@@ -201,7 +203,6 @@ in
     protobuf
     python312
     python313
-    python313Packages.requests # Just because wayland needs it
     rustc
     rustup
     uv
@@ -209,7 +210,6 @@ in
     # Dev tools
     alacritty
     ansible
-    arduino-ide
     awscli
     docker
     git
@@ -220,6 +220,12 @@ in
     ruff
     terraform
     vscode
+
+    # Embedded Systems
+    arduino-ide
+    platformio-core
+    gqrx
+    rtl-sdr
 
     # Extra tools
     nix-prefetch-github
@@ -287,6 +293,9 @@ in
   #   enable = true;
   #   enableSSHSupport = true;
   # };
+
+  # RTL-SDR configuration
+  hardware.rtl-sdr.enable = true;
 
   programs.nautilus-open-any-terminal = {
     enable = true;
