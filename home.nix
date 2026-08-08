@@ -5,6 +5,7 @@
 {
   imports = [
     ./desktop.nix
+    ./apps/btop/btop.nix
     ./apps/cava/cava.nix
     ./apps/hypr/hypr.nix
     ./apps/rofi/rofi.nix

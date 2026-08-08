@@ -184,7 +184,6 @@ in
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     # Terminal apps
-    btop
     curl
     htop
     tree
