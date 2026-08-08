@@ -18,7 +18,7 @@
   home.stateVersion = "25.11";
   home.packages = with pkgs; [
     # System packages
-    # The desktop environment is use is Gnome 49.2
+    # The desktop environment used is Gnome 49.2
     # I had problems with right click in touchpad, it wasn't working
     # So I installed this gnome extension and run this command
     # gsettings set org.gnome.desktop.peripherals.touchpad click-method 'areas'
@@ -28,6 +28,10 @@
     # Apps
     alacritty-theme
     blesh
+
+    # Hyprland related
+    quickshell
+    qt6.qtwayland
   ];
 
   programs.bash = {
@@ -285,6 +289,14 @@
         }
         "break"
       ];
+    };
+  };
+
+  programs.quickshell = {
+    enable = true;
+    activeConfig = "overview";
+    configs = {
+      overview = ./apps/quickshell/overview;
     };
   };
 }

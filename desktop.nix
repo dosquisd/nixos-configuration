@@ -8,7 +8,25 @@ let
         "source= $UserConfigs/ENVariables.conf # Environment variables to load"
       ]
       [
-        "# startup apps are managed by Home Manager services"
+        ''
+        # startup apps are managed by Home Manager services
+        # -- but these still need to run inside Hyprland's own exec-once context --
+
+        # Import env vars into systemd/dbus user session (needed by nm-applet, blueman-applet, etc.)
+        exec-once = dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP HYPRLAND_INSTANCE_SIGNATURE
+        exec-once = systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP HYPRLAND_INSTANCE_SIGNATURE
+
+        # Clipboard manager watchers (must run here, not via systemd,
+        # to avoid the data-control protocol timing issue)
+        exec-once = ${pkgs.wl-clipboard}/bin/wl-paste --type text --watch ${pkgs.cliphist}/bin/cliphist store
+        exec-once = ${pkgs.wl-clipboard}/bin/wl-paste --type image --watch ${pkgs.cliphist}/bin/cliphist store
+
+        # Idle daemon
+        exec-once = ${pkgs.hypridle}/bin/hypridle
+
+        # Quickshell (desktop overview - Windows+A)
+        exec-once = ${pkgs.quickshell}/bin/qs -c overview
+        ''
         "# environment variables are managed by Home Manager"
       ]
       (builtins.readFile ./apps/hypr/hyprland.conf);
