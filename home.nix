@@ -8,6 +8,7 @@
     ./apps/btop/btop.nix
     ./apps/cava/cava.nix
     ./apps/fastfetch/fastfetch.nix
+    ./apps/ghostty/ghostty.nix
     ./apps/hypr/hypr.nix
     ./apps/quickshell/quickshell.nix
     ./apps/rofi/rofi.nix

@@ -22,8 +22,8 @@ UserScripts="/etc/nixos/apps/hypr/UserScripts"
 resolve_terminal_cmd() {
     if [ -n "$term" ] && command -v "$term" &>/dev/null; then
         echo "$term"
-    elif command -v alacritty &>/dev/null; then
-        echo "alacritty"
+    elif command -v ghostty &>/dev/null; then
+        echo "ghostty"
     elif command -v kitty &>/dev/null; then
         echo "kitty"
     else
@@ -37,7 +37,7 @@ launch_editor() {
     terminal_cmd=$(resolve_terminal_cmd)
 
     if [ -z "$terminal_cmd" ]; then
-        notify-send -i "$iDIR/error.png" "E-R-R-O-R" "No terminal found. Install alacritty or set \$term correctly."
+        notify-send -i "$iDIR/error.png" "E-R-R-O-R" "No terminal found. Install ghostty or set \$term correctly."
         return 1
     fi
 

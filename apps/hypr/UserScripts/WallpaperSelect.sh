@@ -3,7 +3,7 @@
 # This script for selecting wallpapers (SUPER W)
 
 # WALLPAPERS PATH
-terminal=alacritty
+terminal=ghostty
 wallDIR="/etc/nixos/apps/wallpapers"
 SCRIPTSDIR="/etc/nixos/apps/hypr/scripts"
 wallpaper_current="/etc/nixos/apps/hypr/wallpaper_effects/.wallpaper_current"

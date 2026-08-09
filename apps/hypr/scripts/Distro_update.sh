@@ -8,12 +8,12 @@ iDIR="/etc/nixos/apps/swaync/images"
 launch_update_terminal() {
   local update_command="$1"
 
-  if command -v alacritty &> /dev/null; then
-    alacritty --title update -e bash -lc "$update_command"
+  if command -v ghostty &> /dev/null; then
+    ghostty --title update -e bash -lc "$update_command"
   elif command -v kitty &> /dev/null; then
     kitty -T update bash -lc "$update_command"
   else
-    notify-send -i "$iDIR/error.png" "No terminal found" "Install alacritty or kitty to run distro updates from this script."
+    notify-send -i "$iDIR/error.png" "No terminal found" "Install ghostty or kitty to run distro updates from this script."
     exit 1
   fi
 }

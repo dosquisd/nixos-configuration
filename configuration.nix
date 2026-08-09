@@ -207,7 +207,6 @@ in
     uv
 
     # Dev tools
-    alacritty
     ansible
     awscli
     docker
@@ -217,6 +216,7 @@ in
     nixfmt
     postman
     ruff
+    tailscale
     terraform
     vscode
 
@@ -274,6 +274,8 @@ in
 
     # Just to test it, but in practice I'll use jetbrains everywhere
     nerd-fonts.fira-code
+
+    nerd-fonts.fantasque-sans-mono
   ];
 
   environment.binsh = "${pkgs.bash}/bin/bash";
@@ -298,7 +300,7 @@ in
 
   programs.nautilus-open-any-terminal = {
     enable = true;
-    terminal = "alacritty";
+    terminal = "ghostty";
   };
 
   programs.direnv = {

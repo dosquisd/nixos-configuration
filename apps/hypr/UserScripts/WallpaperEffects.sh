@@ -3,7 +3,7 @@
 # Wallpaper Effects using ImageMagick (SUPER SHIFT W)
 
 # Variables
-terminal=alacritty
+terminal=ghostty
 wallpaper_current="/etc/nixos/apps/hypr/wallpaper_effects/.wallpaper_current"
 wallpaper_output="/etc/nixos/apps/hypr/wallpaper_effects/.wallpaper_modified"
 SCRIPTSDIR="/etc/nixos/apps/hypr/scripts"

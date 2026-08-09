@@ -8,7 +8,7 @@
 # Example: ./Dropdown.sh foot
 #          ./Dropdown.sh -d foot (with debug output)
 #          ./Dropdown.sh "kitty -e zsh"
-#          ./Dropdown.sh "alacritty --working-directory /home/user"
+#          ./Dropdown.sh "ghostty --working-directory /home/user"
 
 DEBUG=false
 SPECIAL_WS="special:scratchpad"
@@ -46,7 +46,7 @@ if [ -z "$TERMINAL_CMD" ]; then
     echo "  $0 foot"
     echo "  $0 -d foot (with debug output)"
     echo "  $0 'kitty -e zsh'"
-    echo "  $0 'alacritty --working-directory /home/user'"
+    echo "  $0 'ghostty --working-directory /home/user'"
     echo ""
     echo "Edit the script to modify size and position:"
     echo "  WIDTH_PERCENT  - Width as percentage of screen (default: 50)"

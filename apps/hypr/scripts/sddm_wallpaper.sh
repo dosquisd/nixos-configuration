@@ -56,12 +56,12 @@ if hostnamectl 2>/dev/null | grep -q 'Operating System: NixOS'; then
     exit 0
 fi
 
-if command -v alacritty >/dev/null 2>&1; then
-    terminal_cmd=(alacritty --title "SDDM Update" -e)
+if command -v ghostty >/dev/null 2>&1; then
+    terminal_cmd=(ghostty --title "SDDM Update" -e)
 elif command -v kitty >/dev/null 2>&1; then
     terminal_cmd=(kitty -T "SDDM Update")
 else
-    notify-send -i "$iDIR/error.png" "SDDM" "No compatible terminal found (need alacritty or kitty)."
+    notify-send -i "$iDIR/error.png" "SDDM" "No compatible terminal found (need ghostty or kitty)."
     exit 1
 fi
 
